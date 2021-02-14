@@ -1,11 +1,24 @@
 import React from 'react'
-import '../scss/style.scss'
+import '../styles/style.css'
 import type { AppProps } from 'next/app'
 import Head from 'next/Head'
+import { QueryClient, QueryClientProvider } from 'react-query'
+import { Hydrate } from 'react-query/hydration'
+
+
 
 export default function MyApp({ Component, pageProps }: AppProps) {
+    const queryClient = new QueryClient({
+        defaultOptions: {
+          queries: {
+            refetchOnWindowFocus: false,
+          },
+        },
+      })
+
   return (
-    <>
+    <QueryClientProvider client={queryClient}>
+       <Hydrate state={pageProps.dehydratedState}>
         <Head>
             <meta charSet="utf-8" />
             <meta name="viewport" content="initial-scale=1.0, width=device-width" />
@@ -18,6 +31,7 @@ export default function MyApp({ Component, pageProps }: AppProps) {
             />
         </Head>
         <Component {...pageProps} />
-    </> 
+        </Hydrate>
+     </QueryClientProvider>
   ) 
 }

@@ -6,9 +6,9 @@ interface HeaderProps {
 
 const Header: React.FC<HeaderProps> = ({}) => {
         return (
-            <div className='header-wrapper' >
-                <h1>Grubstake</h1>
-                <input type='search' ></input>
+            <div className='w-full h-10 flex items-center justify-between px-10 bg-gray-400' >
+                    <h1>grub&#183;stake</h1>
+                    <input type='search' ></input>
             </div>
         );
 }
