@@ -1,7 +1,7 @@
 import React from 'react'
 import '../styles/style.css'
 import type { AppProps } from 'next/app'
-import Head from 'next/Head'
+import Head from 'next/head'
 import { QueryClient, QueryClientProvider } from 'react-query'
 import { Hydrate } from 'react-query/hydration'
 
