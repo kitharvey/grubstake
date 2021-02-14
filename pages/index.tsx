@@ -1,15 +1,28 @@
-import Link from 'next/link'
-import Layout from '../components/Layout'
+import React from 'react'
+import { QueryClient, QueryClientProvider } from 'react-query';
+import Header from '../components/Header'
+import Posts, { PostsProps } from '../components/Posts';
 
-const IndexPage = () => (
-  <Layout title="Home | Next.js + TypeScript Example">
-    <h1>Hello Next.js 👋</h1>
-    <p>
-      <Link href="/about">
-        <a>About</a>
-      </Link>
-    </p>
-  </Layout>
-)
+const queryClient = new QueryClient({
+    defaultOptions: {
+      queries: {
+        refetchOnWindowFocus: false,
+      },
+    },
+  })
 
-export default IndexPage
+
+
+const index: React.FC<PostsProps> = ({users}) => {
+        return (
+            <QueryClientProvider client={queryClient}>
+                <div>
+                    <Header />
+                    <Posts users={users} />
+                </div>
+            </QueryClientProvider>
+        );
+}
+
+
+export default index
