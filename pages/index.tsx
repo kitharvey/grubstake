@@ -1,26 +1,26 @@
+import { InferGetStaticPropsType } from 'next';
 import React from 'react'
-import { QueryClient, QueryClientProvider } from 'react-query';
 import Header from '../components/Header'
-import Posts, { PostsProps } from '../components/Posts';
+import Posts from '../components/Posts';
 
-const queryClient = new QueryClient({
-    defaultOptions: {
-      queries: {
-        refetchOnWindowFocus: false,
-      },
-    },
-  })
+export const getStaticProps = async () => {
+        const res = await fetch('https://jsonplaceholder.typicode.com/users');
+        const data = await res.json();
+      
+        return {
+          props: { users: data }
+        }
+      }
+      
 
 
 
-const index: React.FC<PostsProps> = ({users}) => {
+function index({users}:  InferGetStaticPropsType<typeof getStaticProps>){
         return (
-            <QueryClientProvider client={queryClient}>
-                <div>
+                <div className='' >
                     <Header />
                     <Posts users={users} />
                 </div>
-            </QueryClientProvider>
         );
 }
 
