@@ -8,3 +8,21 @@ export type User = {
   id: number
   name: string
 }
+
+export interface ActiveStock{
+  ticker : string
+  changes : number
+  price : string
+  changesPercentage : string
+  companyName : string
+}
+
+export interface NewsData{
+  symbol : string
+  publishedDate : string
+  title : string
+  image : string
+  site : string
+  text : string
+  url : string
+}

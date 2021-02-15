@@ -2,6 +2,7 @@ import React from 'react'
 import '../styles/style.css'
 import type { AppProps } from 'next/app'
 import Head from 'next/head'
+import Header from '../components/Header'
 
 
 
@@ -20,7 +21,10 @@ export default function MyApp({ Component, pageProps }: AppProps) {
             content="Access all stocks discounted cash flow statements, market price, stock markets news, and learn more about Financial Modeling. Learn M&A, LBO, DCF, Comps, and Financial Statement Modeling thought concrete examples"
             />
         </Head>
-        <Component {...pageProps} />
+        <div className='' >
+          <Header />
+          <Component {...pageProps} />
+        </div>
      </>
   ) 
 }

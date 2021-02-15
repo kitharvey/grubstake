@@ -4,6 +4,10 @@ module.exports = {
     purge: ['./pages/**/*.{js,ts,jsx,tsx}', './components/**/*.{js,ts,jsx,tsx}'],
     darkMode: false, // or 'media' or 'class'
     theme: {
+      backdropFilter: { // defaults to {}
+        'none': 'none',
+        'blur': 'blur(30px)',
+      },
       colors: {
         transparent: 'transparent',
         current: 'currentColor',
@@ -14,6 +18,9 @@ module.exports = {
         red: colors.rose,
         yellow: colors.amber,
         green: colors.emerald,
+        grayGlass: {
+          DEFAULT: '#464e5660'
+        }
       },
       extend: {
         keyframes: {
@@ -30,5 +37,7 @@ module.exports = {
     variants: {
       extend: {},
     },
-    plugins: [],
+    plugins: [
+      require('tailwindcss-filters'),
+    ],
   }
