@@ -41,7 +41,7 @@ const News: React.FC = () => {
         clearInterval(timer)
         timer = setInterval(() => {
             setPage([page + 1, 0])
-        }, 10000)
+        }, 20*1000)
         return () => {
             clearInterval(timer)
         }
@@ -63,10 +63,10 @@ const News: React.FC = () => {
                                 <NewsCard data={newsData[imageIndex]} />
                             </motion.div>
                         </AnimatePresence>
-                        <div className="group cursor-pointer absolute bottom-1/2 left-0 transform translate-x-4 translate-y-1/2 transition-all hover:scale-125 text-white text-4xl" onClick={() => paginate(-1)}>
+                        <div className="group cursor-pointer absolute bottom-1/2 left-0 transform translate-x-4 translate-y-1/2 transition-all hover:scale-125 active:scale-100 text-white text-4xl" onClick={() => paginate(-1)}>
                             <FontAwesomeIcon icon={faAngleLeft}/>
                         </div>
-                        <div className="group cursor-pointer absolute bottom-1/2 right-0 transform -translate-x-4 translate-y-1/2 transition-all hover:scale-125 text-white text-4xl" onClick={() => paginate(1)}>
+                        <div className="group cursor-pointer absolute bottom-1/2 right-0 transform -translate-x-4 translate-y-1/2 transition-all hover:scale-125 active:scale-100 text-white text-4xl" onClick={() => paginate(1)}>
                             <FontAwesomeIcon icon={faAngleRight}/>
                         </div>
                     </div>
