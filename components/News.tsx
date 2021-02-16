@@ -1,42 +1,72 @@
-import React from 'react'
+import React, {useEffect, useState} from 'react'
 import newsData from '../data/news'
-import { NewsData } from '../interfaces';
-// import Link from 'next/link'
+import { motion, AnimatePresence } from "framer-motion";
+import { wrap } from "popmotion";
+import NewsCard from './NewsCard';
 
-function trimEllip(str: string, len: number) {
-    return str.length > len ? str.substring(0, len) + "..." : str;
-  }
+const variants = {
+    enter: () => {
+      return {
+        zIndex: 0,
+        x: 0,
+        opacity: 0,
+      };
+    },
+    center: {
+      zIndex: 1,
+      x: 0,
+      opacity: 1
+    },
+    exit: () => {
+      return {
+        zIndex: 0,
+        x: 0,
+        opacity: 0
+      };
+    }
+  };
 
 const News: React.FC = () => {
+
+    const [[page, direction], setPage] = useState([0, 0]);
+
+    // We only have 3 images, but we paginate them absolutely (ie 1, 2, 3, 4, 5...) and
+    // then wrap that within 0-2 to find our image ID in the array below. By passing an
+    // absolute page index as the `motion` component's `key` prop, `AnimatePresence` will
+    // detect it as an entirely new image. So you can infinitely paginate as few as 1 images.
+    const imageIndex = wrap(0, newsData.length, page);
+  
+    const paginate = (newDirection: number) => {
+      setPage([page + newDirection, newDirection]);
+    };
+
+    useEffect(() => {
+        console.log({page, direction})
+    }, [page, direction])
+
         return (
-                <div className='w-full' >
-                    {newsData.map( (data: NewsData, index) => {
-                        return (
-                            <div key={index} className='w-full h-96 flex overflow-hidden rounded-3xl' >
-                                <img src={data.image} alt={data.title} className='w-3/5' loading='lazy' ></img>
-                                <div className='w-2/5 h-full' style={{
-                                    backgroundImage: `url(${data.image})`,
-                                    backgroundRepeat: 'no-repeat',
-                                    backgroundSize: '200%',
-                                    backgroundPosition: 'center',
-                                }} >
-                                    <div className='w-full h-full backdrop-blur bg-grayGlass text-white p-10 grid grid-rows-6' >
-                                        <div className='row-span-4 h-full w-full overflow-ellipsis overflow-hidden block' >
-                                            <p className='text-2xl' >{data.title}</p>
-                                            <p className='font-thin ' >{trimEllip(data.text, 150)}</p>
-                                        </div>
-                                        <div>
-                                            <p className='font-thin text-xs' >{data.publishedDate.split(' ')[0]}</p>
-                                            <p className='font-thin text-xs' >{data.site}</p>
-                                        </div>
-
-
-                                        <a href={data.url}><p className='text-xs' >Read more...</p></a>
-                                    </div>
-                                </div>
-                            </div>
-                        ) 
-                    } )}
+                <div className='mt-20'>
+                    <div className='w-3/4 mx-auto relative' >
+                        <AnimatePresence initial={false} custom={direction}>
+                            <motion.div
+                            key={page}
+                            className='w-auto flex'
+                            custom={direction}
+                            variants={variants}
+                            initial="enter"
+                            animate="center"
+                            exit="exit"
+                            >
+                                <NewsCard data={newsData[imageIndex]} />
+                            </motion.div>
+                        </AnimatePresence>
+                    </div>
+                    <div className="next" onClick={() => paginate(1)}>
+                        {"‣"}
+                    </div>
+                    <div className="prev" onClick={() => paginate(-1)}>
+                        {"‣"}
+                    </div>
                 </div>
         );
 }
