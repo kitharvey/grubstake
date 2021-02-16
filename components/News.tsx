@@ -3,6 +3,8 @@ import newsData from '../data/news'
 import { motion, AnimatePresence } from "framer-motion";
 import { wrap } from "popmotion";
 import NewsCard from './NewsCard';
+import { FontAwesomeIcon } from '@fortawesome/react-fontawesome'
+import { faAngleLeft, faAngleRight } from '@fortawesome/free-solid-svg-icons'
 
 const variants = {
     enter: () => {
@@ -27,26 +29,27 @@ const variants = {
   };
 
 const News: React.FC = () => {
-
     const [[page, direction], setPage] = useState([0, 0]);
-
-    // We only have 3 images, but we paginate them absolutely (ie 1, 2, 3, 4, 5...) and
-    // then wrap that within 0-2 to find our image ID in the array below. By passing an
-    // absolute page index as the `motion` component's `key` prop, `AnimatePresence` will
-    // detect it as an entirely new image. So you can infinitely paginate as few as 1 images.
     const imageIndex = wrap(0, newsData.length, page);
-  
+    let timer: ReturnType<typeof setInterval> = setInterval(() => { }, 1000);
+
     const paginate = (newDirection: number) => {
-      setPage([page + newDirection, newDirection]);
+        setPage([page + newDirection, newDirection]);
     };
 
     useEffect(() => {
-        console.log({page, direction})
-    }, [page, direction])
+        clearInterval(timer)
+        timer = setInterval(() => {
+            setPage([page + 1, 0])
+        }, 10000)
+        return () => {
+            clearInterval(timer)
+        }
+    }, [page])
 
         return (
-                <div className='mt-20'>
-                    <div className='w-3/4 mx-auto relative' >
+                <div className='mt-20 h-auto w-full'>
+                    <div className='w-full mx-auto h-96 relative' >
                         <AnimatePresence initial={false} custom={direction}>
                             <motion.div
                             key={page}
@@ -60,13 +63,14 @@ const News: React.FC = () => {
                                 <NewsCard data={newsData[imageIndex]} />
                             </motion.div>
                         </AnimatePresence>
+                        <div className="group cursor-pointer absolute bottom-1/2 left-0 transform translate-x-4 translate-y-1/2 transition-all hover:scale-125 text-white text-4xl" onClick={() => paginate(-1)}>
+                            <FontAwesomeIcon icon={faAngleLeft}/>
+                        </div>
+                        <div className="group cursor-pointer absolute bottom-1/2 right-0 transform -translate-x-4 translate-y-1/2 transition-all hover:scale-125 text-white text-4xl" onClick={() => paginate(1)}>
+                            <FontAwesomeIcon icon={faAngleRight}/>
+                        </div>
                     </div>
-                    <div className="next" onClick={() => paginate(1)}>
-                        {"‣"}
-                    </div>
-                    <div className="prev" onClick={() => paginate(-1)}>
-                        {"‣"}
-                    </div>
+                  
                 </div>
         );
 }

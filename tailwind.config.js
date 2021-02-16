@@ -4,6 +4,13 @@ module.exports = {
     purge: ['./pages/**/*.{js,ts,jsx,tsx}', './components/**/*.{js,ts,jsx,tsx}'],
     darkMode: false, // or 'media' or 'class'
     theme: {
+      filter: { // defaults to {}
+        'none': 'none',
+        'grayscale': 'grayscale(1)',
+        'invert': 'invert(1)',
+        'sepia': 'sepia(1)',
+        'opacity': 'opacity(80%)'
+      },
       backdropFilter: { // defaults to {}
         'none': 'none',
         'blur': 'blur(30px)',
@@ -19,7 +26,7 @@ module.exports = {
         yellow: colors.amber,
         green: colors.emerald,
         grayGlass: {
-          DEFAULT: '#464e5660'
+          DEFAULT: '#464e5690'
         }
       },
       extend: {
@@ -35,7 +42,9 @@ module.exports = {
       },
     },
     variants: {
-      extend: {},
+      extend: {
+        filter: ['hover', 'focus', 'group-hover']
+      },
     },
     plugins: [
       require('tailwindcss-filters'),
