@@ -1,16 +1,12 @@
 import { faAngleDown, faAngleUp } from '@fortawesome/free-solid-svg-icons';
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
-import React, { useEffect, useState } from 'react'
+import React from 'react'
 import useSortTable from '../functions/useSortTable';
 import { PriceProps } from '../interfaces';
 
 interface TableProps {
     title: string | string[]
     tableItems: PriceProps[]
-}
-
-function prop<PriceProps, Key extends keyof PriceProps>(obj: PriceProps, key: Key) {
-    return obj[key];
 }
 
 const Table: React.FC<TableProps> = ({title, tableItems}) => {
