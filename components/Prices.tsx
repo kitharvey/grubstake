@@ -15,11 +15,14 @@ const Prices: React.FC<PricesComponentProps> = ({title, link}) => {
     const router = useRouter()
         return (
             <div>
-                <div className='flex items-center justify-between cursor-pointer hover:text-blue-800' onClick={() => router.push({
+                <div className='group flex items-center justify-between cursor-pointer hover:text-blue-800' onClick={() => router.push({
                                     pathname: `${link}`
                                   })}>
                     <h1 className='text-lg' >{title}</h1>
-                    <FontAwesomeIcon icon={faAngleRight}/>
+                    <div className='flex' >
+                        <p className='opacity-0 transition-all mr-1 text-sm group-hover:opacity-100' >View All</p>
+                        <FontAwesomeIcon icon={faAngleRight}/>
+                    </div>
                 </div>
                 <div>
                     {items.map( (item: PriceProps) => {
