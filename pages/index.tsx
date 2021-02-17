@@ -23,13 +23,13 @@ function index(
         return (
                 <div className='h-auto container mx-auto px-10' >
                         <News />
-                        <div className='grid grid-cols-3 gap-10 my-10' >
-                                <Prices />
-                                <Prices />
-                                <Prices />
-                                <Prices />
-                                <Prices />
-                                <Prices />
+                        <div className='grid grid-cols-3 gap-12 my-10' >
+                                <Prices title='Active' link='top-active-stocks' />
+                                <Prices title='Gainers' link='top-stock-gainers' />
+                                <Prices title='Losers' link='top-stock-losers' />
+                                <Prices title='Currencies' link='currencies' />
+                                <Prices title='Cryptocurrency' link='cryptocurrency' />
+                                <Prices title='Sector Performance' link='sector-performance' />
                         </div>
                 </div>
         );

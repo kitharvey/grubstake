@@ -26,7 +26,7 @@ export interface NewsData{
   text : string
   url : string
 }
-export interface PricesProps{
+export interface PriceProps{
   symbol : string,
   name : string,
   price : number,

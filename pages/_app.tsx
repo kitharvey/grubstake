@@ -5,15 +5,13 @@ import Head from 'next/head'
 import Header from '../components/Header'
 
 
-
 export default function MyApp({ Component, pageProps }: AppProps) {
-
   return (
     <>
         <Head>
             <meta charSet="utf-8" />
             <meta name="viewport" content="initial-scale=1.0, width=device-width" />
-            <title>grub&#183;stake</title>
+            <title>Shtonks</title>
             {/* <link rel="shortcut icon" type="image/png" href="/icon.png" sizes="50x32"/> */}
             <meta name="title" content="grub&#183;stake | Financial Modeling Prep Discounted Clone" />
             <meta
