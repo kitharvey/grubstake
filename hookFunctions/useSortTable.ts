@@ -3,20 +3,10 @@ import { PriceProps } from "../interfaces";
 
 type Key = 'symbol' | 'name' | 'price' | 'change'
 type Direction = string
-interface setSortConfigProps {
+export interface setSortConfigProps {
   key: Key
   direction: Direction
 }
-
-// const sortTFout = (a: any, b: any) => {
-//   if (a.key === b.key)
-//     return a.position - b.position;
-//   if (a.key < b.key)
-//     return -1;
-//   return 1;
-// };
-
-
 
 const useSortTable = (items: PriceProps[]) => {
   const [sortConfig, setSortConfig] = useState<setSortConfigProps | null>(null);

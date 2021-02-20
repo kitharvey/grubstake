@@ -1,5 +1,4 @@
-import { faAngleRight } from '@fortawesome/free-solid-svg-icons';
-import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
+import { FaAngleRight } from 'react-icons/fa';
 import React from 'react'
 import majorIndexes from '../data/major';
 import { PriceProps } from '../interfaces';
@@ -19,7 +18,7 @@ const Prices: React.FC<PricesComponentProps> = ({title, link}) => {
                                     pathname: `${link}`
                                   })}>
                     <h1 className='text-lg font-black' >{title}</h1>
-                    <FontAwesomeIcon icon={faAngleRight}/>
+                    <FaAngleRight />
                 </div>
                 <div>
                     {items.map( (item: PriceProps) => {

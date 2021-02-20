@@ -3,9 +3,7 @@ import newsData from '../data/news'
 import { motion, AnimatePresence } from "framer-motion";
 import { wrap } from "popmotion";
 import NewsCard from './NewsCard';
-import { FontAwesomeIcon } from '@fortawesome/react-fontawesome'
-import { faAngleLeft, faAngleRight } from '@fortawesome/free-solid-svg-icons'
-
+import {FaAngleLeft, FaAngleRight} from 'react-icons/fa'
 const variants = {
   enter: (direction: number) => {
     return {
@@ -84,10 +82,10 @@ const News: React.FC = () => {
                             </motion.div>
                         </AnimatePresence>
                         <div className="cursor-pointer absolute bottom-1/2 left-0 transform translate-x-4 translate-y-1/2 transition-all hover:text-blue-800 text-4xl z-10" onClick={() => paginate(-1)}>
-                            <FontAwesomeIcon icon={faAngleLeft}/>
+                            <FaAngleLeft />
                         </div>
                         <div className="cursor-pointer absolute bottom-1/2 right-0 transform -translate-x-4 translate-y-1/2 transition-all hover:text-blue-800 text-4xl z-10" onClick={() => paginate(1)}>
-                            <FontAwesomeIcon icon={faAngleRight}/>
+                            <FaAngleRight />
                         </div>
                     </div>
                   

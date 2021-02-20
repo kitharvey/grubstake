@@ -1,22 +1,31 @@
-import { faAngleDown, faAngleUp } from '@fortawesome/free-solid-svg-icons';
-import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
 import React from 'react'
-import useSortTable from '../hookFunctions/useSortTable';
+import useSortTable, {setSortConfigProps} from '../hookFunctions/useSortTable';
 import { PriceProps } from '../interfaces';
-
+import {FaAngleDown, FaAngleUp} from 'react-icons/fa'
 interface TableProps {
     title: string | string[]
     tableItems: PriceProps[]
 }
+interface TableHeaderNameProps {
+    title: string
+    sortName: string
+    sortConfig: setSortConfigProps | null
+}
+
+const getClassNamesFor = (name: string, sortConfig: setSortConfigProps | null) => {
+    if (!sortConfig) {
+      return <FaAngleDown/>
+    }
+    return sortConfig.key === name ? sortConfig.direction === 'ascending' ? <FaAngleDown /> : <FaAngleUp /> : <FaAngleDown/>
+}
+
+const TableHeaderName: React.FC <TableHeaderNameProps> = ({title, sortName, sortConfig}) => {
+    return  <div className='flex items-center justify-center' >{title}&nbsp;<span>{getClassNamesFor(sortName, sortConfig)}</span></div>
+}
 
 const Table: React.FC<TableProps> = ({title, tableItems}) => {
     const { items, requestSort, sortConfig } = useSortTable(tableItems);
-    const getClassNamesFor = (name: string) => {
-        if (!sortConfig) {
-          return <FontAwesomeIcon icon={faAngleDown} />
-        }
-        return sortConfig.key === name ? sortConfig.direction === 'ascending' ? <FontAwesomeIcon icon={faAngleUp} /> : <FontAwesomeIcon icon={faAngleDown} /> : <FontAwesomeIcon icon={faAngleDown} />
-    }
+
 
         return (
             <div className='container mx-auto p-10' >
@@ -25,17 +34,17 @@ const Table: React.FC<TableProps> = ({title, tableItems}) => {
                     <table className="table-fixed w-full text-sm ">
                         <thead className='bg-gray-200' >
                             <tr>
-                                <th className='w-1/6 p-4 cursor-pointer transition-all hover:text-gray-600' onClick={() => requestSort('symbol')} >
-                                    <span>Symbol &nbsp;{getClassNamesFor('symbol')}</span>
+                                <th className='w-1/6 p-4 cursor-pointer transition-all hover:text-blue-800' onClick={() => requestSort('symbol')} >
+                                    <TableHeaderName title='Symbol' sortName='symbol' sortConfig={sortConfig} />
                                 </th>
-                                <th className='w-2/6 p-4 cursor-pointer transition-all hover:text-gray-600' onClick={() => requestSort('name')} >
-                                    <span>Name &nbsp;{getClassNamesFor('name')}</span>
+                                <th className='w-2/6 p-4 cursor-pointer transition-all hover:text-blue-800' onClick={() => requestSort('name')} >
+                                    <TableHeaderName title='Name' sortName='name' sortConfig={sortConfig} />
                                 </th>
-                                <th className='w-1/6 p-4 cursor-pointer transition-all hover:text-gray-600' onClick={() => requestSort('price')} >
-                                    <span>Price &nbsp;{getClassNamesFor('price')}</span>
+                                <th className='w-1/6 p-4 cursor-pointer transition-all hover:text-blue-800' onClick={() => requestSort('price')} >
+                                    <TableHeaderName title='Price' sortName='price' sortConfig={sortConfig} />
                                 </th>
-                                <th className='w-1/6 p-4 cursor-pointer transition-all hover:text-gray-600'onClick={() => requestSort('change')} >
-                                    <span>Change &nbsp;{getClassNamesFor('change')}</span>
+                                <th className='w-1/6 p-4 cursor-pointer transition-all hover:text-blue-800'onClick={() => requestSort('change')} >
+                                    <TableHeaderName title='Change' sortName='change' sortConfig={sortConfig} />
                                 </th>
                                 <th className='w-1/6 p-4' >Change%</th>
                             </tr>
