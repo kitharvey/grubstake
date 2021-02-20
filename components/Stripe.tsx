@@ -4,7 +4,7 @@ import mostActiveStocks from '../data/active'
 
 const Stripe: React.FC = () => {
     return (
-        <div className='animate-ticker flex font-thin text-sm' >
+        <div className='animate-ticker flex font-thin text-xs' >
             {mostActiveStocks.map((mostActiveStock: ActiveStock) => {
                 return (
                     <p className='px-5 whitespace-nowrap inline-block' key={mostActiveStock.ticker} >

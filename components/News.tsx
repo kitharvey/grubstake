@@ -52,8 +52,8 @@ const News: React.FC = () => {
     }, [page, direction])
 
         return (
-                <div className='mt-20 h-auto w-full'>
-                    <div className='w-full mx-auto h-96 relative overflow-hidden rounded-xl' >
+                <div className='h-auto w-full'>
+                    <div className='w-full mx-auto h-96 relative rounded-xl' >
                         <AnimatePresence initial={false} custom={direction}>
                             <motion.div
                             key={page}

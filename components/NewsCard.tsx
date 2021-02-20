@@ -12,7 +12,7 @@ function trimEllip(str: string, len: number) {
 
 const NewsCard: React.FC<NewsCardProps> = ({data}) => {
         return (
-                <div className='w-full h-full flex overflow-hidden rounded-xl' >
+                <div className='w-full h-full flex overflow-hidden rounded-xl shadow-lg' >
                     <div className='w-3/5' style={{
                         backgroundImage: `url(${data.image})`,
                         backgroundRepeat: 'no-repeat',

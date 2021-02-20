@@ -1,6 +1,8 @@
 import React from 'react'
 import Crawler from './Crawler'
 import { useRouter } from 'next/router'
+import { DiGithubBadge } from 'react-icons/di';
+
 interface HeaderProps {
 
 }
@@ -11,12 +13,18 @@ const Header: React.FC<HeaderProps> = ({}) => {
                 <div className='relative z-10' >
                         <div className='w-full h-auto bg-white' >
                                 <div className='container mx-auto px-10 py-4 flex items-center justify-between' >
-                                        <h1 
-                                        className='text-3xl font-black cursor-pointer hover:text-blue-800'  
-                                        onClick={() => router.push({
-                                                pathname: `/`,
-                                        })} 
-                                        >Shtonks</h1>
+                                        <div className='flex items-center' >
+                                                <h1 
+                                                className='text-3xl font-black cursor-pointer hover:text-blue-800'  
+                                                onClick={() => router.push({
+                                                        pathname: `/`,
+                                                })} 
+                                                >
+                                                        Shtonks
+                                                </h1>
+                                                <a href='https://github.com/kitharvey/grubstake/' target='_blank'  rel="noreferrer" className='text-3xl font-black cursor-pointer ml-4 hover:text-blue-800' ><DiGithubBadge/></a>
+                                        </div>
+
                                         <div className="flex items-center">
                                                 {/* <label htmlFor="searchstock" className="text-black text-sm mr-3 " >Search: </label> */}
                                                 <form method="GET" onSubmit={ (event: React.FormEvent<HTMLFormElement>) => event.preventDefault() }>

@@ -19,7 +19,9 @@
     "postcss": "^8.2.6",
     "react": "latest",
     "react-dom": "latest",
+    "react-icons": "^4.2.0",
     "react-query": "^3.9.5",
+    "react-spinners": "^0.10.6",
     "sass": "^1.32.7",
     "tailwindcss": "^2.0.3",
     "tailwindcss-filters": "^3.0.0"

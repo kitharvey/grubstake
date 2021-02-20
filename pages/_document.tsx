@@ -8,7 +8,7 @@ class Document extends NextDocument<Props> {
         return (
             <Html lang="en">
                 <Head/>
-                <body className='scrollbar-thin scrollbar-thumb-blue-800 scrollbar-track-gray-100'>
+                <body className='scrollbar-thin scrollbar-thumb-blue-800 scrollbar-track-gray-100 overflow-x-hidden'>
                     <Main />
                     <NextScript />
                 </body>

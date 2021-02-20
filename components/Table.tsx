@@ -20,7 +20,7 @@ const Table: React.FC<TableProps> = ({title, tableItems}) => {
 
         return (
             <div className='container mx-auto p-10' >
-                <h1 className='text-2xl font-black my-10' >{title}</h1>
+                <h1 className='text-2xl font-black my-5' >{title}</h1>
                 <div className='w-full overflow-hidden rounded-md shadow-lg' >
                     <table className="table-fixed w-full text-sm ">
                         <thead className='bg-gray-200' >
@@ -37,7 +37,7 @@ const Table: React.FC<TableProps> = ({title, tableItems}) => {
                                 <th className='w-1/6 p-4 cursor-pointer transition-all hover:text-gray-600'onClick={() => requestSort('change')} >
                                     <span>Change &nbsp;{getClassNamesFor('change')}</span>
                                 </th>
-                                <th className='w-1/6 p-4 cursor-pointer transition-all hover:text-gray-600' >Change%</th>
+                                <th className='w-1/6 p-4' >Change%</th>
                             </tr>
                         </thead>
                         <tbody className="">
