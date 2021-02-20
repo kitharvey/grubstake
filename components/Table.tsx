@@ -1,7 +1,7 @@
 import { faAngleDown, faAngleUp } from '@fortawesome/free-solid-svg-icons';
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
 import React from 'react'
-import useSortTable from '../functions/useSortTable';
+import useSortTable from '../hookFunctions/useSortTable';
 import { PriceProps } from '../interfaces';
 
 interface TableProps {
@@ -26,7 +26,7 @@ const Table: React.FC<TableProps> = ({title, tableItems}) => {
                         <thead className='bg-gray-200' >
                             <tr>
                                 <th className='w-1/6 p-4 cursor-pointer transition-all hover:text-gray-600' onClick={() => requestSort('symbol')} >
-                                    <span>Ticker &nbsp;{getClassNamesFor('symbol')}</span>
+                                    <span>Symbol &nbsp;{getClassNamesFor('symbol')}</span>
                                 </th>
                                 <th className='w-2/6 p-4 cursor-pointer transition-all hover:text-gray-600' onClick={() => requestSort('name')} >
                                     <span>Name &nbsp;{getClassNamesFor('name')}</span>

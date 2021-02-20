@@ -1,16 +1,22 @@
 import React from 'react'
 import Crawler from './Crawler'
-
+import { useRouter } from 'next/router'
 interface HeaderProps {
 
 }
 
 const Header: React.FC<HeaderProps> = ({}) => {
+        const router = useRouter()
         return (
                 <div className='relative z-10' >
                         <div className='w-full h-auto bg-white' >
                                 <div className='container mx-auto px-10 py-4 flex items-center justify-between' >
-                                        <h1 className='text-3xl font-black' >Shtonks</h1>
+                                        <h1 
+                                        className='text-3xl font-black cursor-pointer hover:text-blue-800'  
+                                        onClick={() => router.push({
+                                                pathname: `/`,
+                                        })} 
+                                        >Shtonks</h1>
                                         <div className="flex items-center">
                                                 {/* <label htmlFor="searchstock" className="text-black text-sm mr-3 " >Search: </label> */}
                                                 <form method="GET" onSubmit={ (event: React.FormEvent<HTMLFormElement>) => event.preventDefault() }>
