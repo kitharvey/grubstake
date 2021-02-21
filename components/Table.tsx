@@ -28,7 +28,7 @@ const Table: React.FC<TableProps> = ({title, tableItems}) => {
 
 
         return (
-            <div className='container mx-auto p-10' >
+            <div  >
                 <h1 className='text-2xl font-black my-5' >{title}</h1>
                 <div className='w-full overflow-hidden rounded-md shadow-lg' >
                     <table className="table-fixed w-full text-sm ">

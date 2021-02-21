@@ -6,16 +6,15 @@ import { useRouter } from 'next/router'
 
 interface PricesComponentProps{
     title: string
-    link: string
 }
 
-const Prices: React.FC<PricesComponentProps> = ({title, link}) => {
+const Prices: React.FC<PricesComponentProps> = ({title}) => {
     const items = majorIndexes.slice(0, 5)
     const router = useRouter()
         return (
             <div>
                 <div className='group flex items-center justify-between cursor-pointer hover:text-blue-800' onClick={() => router.push({
-                                    pathname: `${link}`
+                                    pathname: `${title}`
                                   })}>
                     <h1 className='text-lg font-black' >{title}</h1>
                     <FaAngleRight />
@@ -27,7 +26,7 @@ const Prices: React.FC<PricesComponentProps> = ({title, link}) => {
                                 key={item.symbol}
                                 className='grid grid-cols-3 text-sm py-4 px-2 bg-white mt-2 rounded-md cursor-pointer transform transition-all hover:-translate-y-1 shadow hover:shadow-lg hover:text-blue-800' 
                                 onClick={() => router.push({
-                                    pathname: `/${link}/${item.symbol}`,
+                                    pathname: `/${title}/${item.symbol}`,
                                   })}
                             >
                                 <div className='text-left' >

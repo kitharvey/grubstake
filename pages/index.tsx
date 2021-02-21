@@ -24,12 +24,12 @@ function index(
                 <div className='h-auto container mx-auto px-10 py-16 overflow-x-hidden' >
                         <News />
                         <div className='grid grid-cols-3 gap-12 mt-16' >
-                                <Prices title='Active' link='top-active-stocks' />
-                                <Prices title='Gainers' link='top-stock-gainers' />
-                                <Prices title='Losers' link='top-stock-losers' />
-                                <Prices title='Currencies' link='currencies' />
-                                <Prices title='Cryptocurrency' link='cryptocurrency' />
-                                <Prices title='Sector Performance' link='sector-performance' />
+                                <Prices title='Active' />
+                                <Prices title='Gainers' />
+                                <Prices title='Losers' />
+                                <Prices title='Currencies'/>
+                                <Prices title='Cryptocurrency' />
+                                <Prices title='Sector Performance' />
                         </div>
                 </div>
         );
