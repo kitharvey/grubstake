@@ -10,21 +10,21 @@ export type User = {
 }
 
 export interface ActiveStock{
-  ticker : string
-  changes : number
-  price : string
-  changesPercentage : string
-  companyName : string
+  'ticker' : string
+  'changes' : number
+  'price' : string
+  'changesPercentage' : string
+  'companyName' : string
 }
 
 export interface NewsData{
-  symbol : string
-  publishedDate : string
-  title : string
-  image : string
-  site : string
-  text : string
-  url : string
+  'symbol' : string
+  'publishedDate' : string
+  'title' : string
+  'image' : string
+  'site' : string
+  'text' : string
+  'url' : string
 }
 export interface PriceProps{
   'symbol' : string,

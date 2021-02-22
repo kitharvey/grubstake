@@ -44,7 +44,8 @@ module.exports = {
     },
     variants: {
       extend: {
-        filter: ['hover', 'focus', 'group-hover']
+        filter: ['hover', 'focus', 'group-hover'],
+        fontWeight: ['hover', 'focus'],
       },
     },
     plugins: [

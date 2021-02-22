@@ -2,6 +2,7 @@ import React from 'react'
 import useSortTable, {setSortConfigProps} from '../hookFunctions/useSortTable';
 import { PriceProps } from '../interfaces';
 import {FaAngleDown, FaAngleUp} from 'react-icons/fa'
+import { useRouter } from 'next/router';
 interface TableProps {
     title: string | string[]
     tableItems: PriceProps[]
@@ -25,7 +26,7 @@ const TableHeaderName: React.FC <TableHeaderNameProps> = ({title, sortName, sort
 
 const Table: React.FC<TableProps> = ({title, tableItems}) => {
     const { items, requestSort, sortConfig } = useSortTable(tableItems);
-
+    const router = useRouter()
 
         return (
             <div  >
@@ -33,7 +34,7 @@ const Table: React.FC<TableProps> = ({title, tableItems}) => {
                 <div className='w-full overflow-hidden rounded-md shadow-lg' >
                     <table className="table-fixed w-full text-sm ">
                         <thead className='bg-gray-200' >
-                            <tr>
+                            <tr >
                                 <th className='w-1/6 p-4 cursor-pointer transition-all hover:text-blue-800' onClick={() => requestSort('symbol')} >
                                     <TableHeaderName title='Symbol' sortName='symbol' sortConfig={sortConfig} />
                                 </th>
@@ -50,13 +51,21 @@ const Table: React.FC<TableProps> = ({title, tableItems}) => {
                             </tr>
                         </thead>
                         <tbody className="">
-                            {items.map( tableItem => <tr key={tableItem.symbol} className='bg-white font-thin hover:bg-gray-50' >
+                            {items.map( tableItem => (
+                                <tr 
+                                    key={tableItem.symbol} 
+                                    className='bg-white font-thin hover:bg-gray-50 hover:font-medium cursor-pointer ' 
+                                    onClick={() => router.push({
+                                        pathname: `/${title}/${tableItem.symbol}`,
+                                    })}
+                                >
                                 <td className='text-center p-3 border-t' >{tableItem.symbol}</td>
                                 <td className='text-center p-3 border-t' >{tableItem.name}</td>
                                 <td className='text-center p-3 border-t' >{tableItem.price.toLocaleString()}</td>
                                 <td className={"text-center p-3 border-t " + (tableItem.change > 0 ? 'text-green-500' : 'text-red-500')} >{tableItem.change.toLocaleString()}</td>
                                 <td className={"text-center p-3 border-t " + (tableItem.change > 0 ? 'text-green-500' : 'text-red-500')} >{tableItem.changesPercentage}%</td>
-                            </tr> )}
+                            </tr>
+                            ))}
                         </tbody>
                     </table>
                 </div>
