@@ -12,13 +12,16 @@ const PriceDetails: React.FC<PriceDetailsProps> = () => {
     const router = useRouter();
     const { priceDetails } = router.query;
         return (
-            <div className='container mx-auto p-10'>
-                <h1 className='font-black' >{priceDetails}  {priceData[0].symbol}</h1>
-                <div className='mt-10' >
-                    <PriceDetailCard priceData={priceData} />
-                    <PriceChart width={800} height={400} />
-                </div> 
+            <div className='flex items-center justify-center h-5/6 w-full' >
+                <div className='container p-10'>
+                    <h1 className='font-black' >{priceDetails}  {priceData[0].symbol}</h1>
+                    <div className='mt-10 flex' >
+                        <PriceDetailCard priceData={priceData} />
+                        <PriceChart />
+                    </div> 
+                </div>
             </div>
+
         );
 }
 
