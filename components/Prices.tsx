@@ -24,7 +24,7 @@ const Prices: React.FC<PricesComponentProps> = ({title}) => {
                         return (
                             <div 
                                 key={item.symbol}
-                                className='grid grid-cols-3 text-sm py-4 px-2 bg-white mt-2 rounded-md cursor-pointer transform transition-all hover:-translate-y-1 shadow hover:shadow-lg hover:text-blue-800' 
+                                className='grid grid-cols-3 text-sm py-4 px-2 bg-white mt-2 rounded-md cursor-pointer transform transition-all hover:-translate-y-0.5 shadow hover:shadow-lg hover:text-blue-800' 
                                 onClick={() => router.push({
                                     pathname: `/${title}/${item.symbol}`,
                                   })}
