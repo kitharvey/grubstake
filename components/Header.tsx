@@ -1,5 +1,4 @@
 import React from 'react'
-import Crawler from './Crawler'
 import { useRouter } from 'next/router'
 import { DiGithubBadge } from 'react-icons/di';
 
@@ -39,7 +38,6 @@ const Header: React.FC<HeaderProps> = ({}) => {
                                         </div>
                                 </div>
                         </div>
-                        <Crawler />
                 </div>
         );
 }

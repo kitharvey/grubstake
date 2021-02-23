@@ -1,9 +1,9 @@
 import React, {useEffect, useState} from 'react'
-import newsData from '../data/news'
 import { motion, AnimatePresence } from "framer-motion";
 import { wrap } from "popmotion";
 import NewsCard from './NewsCard';
 import {FaAngleLeft, FaAngleRight} from 'react-icons/fa'
+import { NewsData } from '../interfaces';
 const variants = {
   enter: (direction: number) => {
     return {
@@ -30,9 +30,14 @@ const swipePower = (offset: number, velocity: number) => {
   return Math.abs(offset) * velocity;
 };
 
-const News: React.FC = () => {
+interface NewsProps{
+  newsData: NewsData[]
+}
+
+const News: React.FC<NewsProps> = ({newsData}) => {
     const [[page, direction], setPage] = useState([0, 1]);
     const imageIndex = wrap(0, newsData.length, page);
+    
     let timer: ReturnType<typeof setInterval> = setInterval(() => { }, 1000);
 
     const paginate = (newDirection: number) => {

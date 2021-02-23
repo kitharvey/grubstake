@@ -3,11 +3,16 @@ import '../styles/style.css'
 import type { AppProps } from 'next/app'
 import Head from 'next/head'
 import Header from '../components/Header'
-
+import { SWRConfig } from 'swr'
 
 export default function MyApp({ Component, pageProps }: AppProps) {
   return (
-    <>
+    <SWRConfig 
+    value={{
+      refreshInterval: 0,
+      revalidateOnFocus: false
+    }}
+    >
         <Head>
             <meta charSet="utf-8" />
             <meta name="viewport" content="initial-scale=1.0, width=device-width" />
@@ -23,6 +28,6 @@ export default function MyApp({ Component, pageProps }: AppProps) {
           <Header />
           <Component {...pageProps} />
         </div>
-     </>
+     </SWRConfig>
   ) 
 }

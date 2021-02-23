@@ -1,15 +1,16 @@
 import { FaAngleRight } from 'react-icons/fa';
 import React from 'react'
-import majorIndexes from '../data/major';
-import { PriceProps } from '../interfaces';
+// import majorIndexes from '../data/major';
+import { MostSearchedProps } from '../interfaces';
 import { useRouter } from 'next/router'
 
 interface PricesComponentProps{
-    title: string
+    title: string,
+    mostSearchedData: MostSearchedProps[]
 }
 
-const Prices: React.FC<PricesComponentProps> = ({title}) => {
-    const items = majorIndexes.slice(0, 5)
+const Prices: React.FC<PricesComponentProps> = ({title, mostSearchedData}) => {
+    const items = mostSearchedData.slice(0, 5)
     const router = useRouter()
         return (
             <div>
@@ -20,7 +21,7 @@ const Prices: React.FC<PricesComponentProps> = ({title}) => {
                     <FaAngleRight />
                 </div>
                 <div>
-                    {items.map( (item: PriceProps) => {
+                    {items.map( (item: MostSearchedProps) => {
                         return (
                             <div 
                                 key={item.symbol}

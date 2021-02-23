@@ -1,17 +1,20 @@
 import React from 'react'
-import { ActiveStock } from '../interfaces'
-import mostActiveStocks from '../data/active'
+import { MostSearchedProps } from '../interfaces'
 
-const Stripe: React.FC = () => {
+interface StripeProps{
+    mostSearchedStocks: MostSearchedProps[]
+}
+
+const Stripe: React.FC<StripeProps> = ({mostSearchedStocks}) => {
     return (
         <div className='animate-ticker flex font-thin text-xs' >
-            {mostActiveStocks.map((mostActiveStock: ActiveStock) => {
+            {mostSearchedStocks.map((mostActiveStock: MostSearchedProps) => {
                 return (
-                    <p className='px-5 whitespace-nowrap inline-block' key={mostActiveStock.ticker} >
-                    <span>{mostActiveStock.ticker}&nbsp;</span>
+                    <p className='px-5 whitespace-nowrap inline-block' key={mostActiveStock.symbol} >
+                    <span>{mostActiveStock.symbol}&nbsp;</span>
                     <span>{(+mostActiveStock.price).toLocaleString()}&nbsp;</span>
-                    <span className={mostActiveStock.changes > 0 ? 'text-green-500' : 'text-red-500'} >{(+mostActiveStock.changes).toLocaleString()}&nbsp;</span>
-                    <span className={mostActiveStock.changes > 0 ? 'text-green-500' : 'text-red-500'} >{mostActiveStock.changesPercentage}</span>
+                    <span className={mostActiveStock.change > 0 ? 'text-green-500' : 'text-red-500'} >{(+mostActiveStock.change).toLocaleString()}&nbsp;</span>
+                    <span className={mostActiveStock.change > 0 ? 'text-green-500' : 'text-red-500'} >({mostActiveStock.changesPercentage}%)</span>
                 </p>
                 )
             })}
