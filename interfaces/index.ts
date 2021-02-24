@@ -4,20 +4,19 @@
 //
 // import { User } from 'path/to/interfaces';
 
-export type User = {
-  id: number
-  name: string
-}
-
-export interface ActiveStock{
+export interface TickersPriceProps{
   'ticker' : string
   'changes' : number
   'price' : string
   'changesPercentage' : string
   'companyName' : string
 }
+export interface SectorPerformancePriceProps{
+  "sector" : string,
+  "changesPercentage" : string
+}
 
-export interface MostSearchedProps{
+export interface StockPricesProps{
   "symbol" : string,
   "name" : string,
   "price" : number,
@@ -41,6 +40,8 @@ export interface MostSearchedProps{
   "sharesOutstanding" : number,
   "timestamp" : number
 }
+
+
 
 export interface NewsData{
   'symbol' : string
@@ -77,7 +78,11 @@ export interface PriceProps{
 }
 
 export interface PriceHistoryProps{
-  data: SinglePrice[]
+  chartData: {
+    "symbol" : string,
+    "historical" : SinglePrice[]
+  } 
+  
 }
 
 export interface SinglePrice{

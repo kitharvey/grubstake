@@ -1,24 +1,22 @@
 import React from 'react'
 import ReactApexChart from 'react-apexcharts';
-import priceHistory from '../data/history'
-import { SinglePrice } from '../interfaces';
+// import priceHistory from '../data/history'
+import { PriceHistoryProps, SinglePrice } from '../interfaces';
 
-interface PriceChartProps {
 
-}
 
 const getColor = (data: SinglePrice[]) => {
   return data[data.length-1].changeOverTime > 0 ? '#10B981' : '#EF4444'
 }
 
-const PriceChart: React.FC<PriceChartProps> = () => {
-  const data = priceHistory.historical.reverse()
+const PriceChart: React.FC<PriceHistoryProps> = ({chartData}) => {
+  const data = chartData.historical.reverse()
   const options = {
     chart: {
       type: 'area',
     },
     title: {
-      text: `${priceHistory.symbol} Daily`,
+      text: `${chartData.symbol} Daily`,
       align: 'left',
       margin: 10,
       offsetX: 0,

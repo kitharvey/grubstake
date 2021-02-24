@@ -3,9 +3,14 @@ import '../styles/style.css'
 import type { AppProps } from 'next/app'
 import Head from 'next/head'
 import Header from '../components/Header'
-import { SWRConfig } from 'swr'
+import useSWR, { SWRConfig } from 'swr'
+import Crawler from '../components/Crawler'
+import { fetcher } from '../fetcher/fetcher'
+
 
 export default function MyApp({ Component, pageProps }: AppProps) {
+  const { data: mostSearchedData } = useSWR('quote/AAPL,FB,GOOG,MSFT,ZNGA,NVDA,WBA,PIH', fetcher)
+
   return (
     <SWRConfig 
     value={{
@@ -26,6 +31,8 @@ export default function MyApp({ Component, pageProps }: AppProps) {
         </Head>
         <div className='w-full h-screen' >
           <Header />
+          {mostSearchedData && <Crawler mostSearchedData={mostSearchedData} />}
+
           <Component {...pageProps} />
         </div>
      </SWRConfig>

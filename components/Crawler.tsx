@@ -1,9 +1,9 @@
 import React from 'react'
-import { MostSearchedProps } from '../interfaces';
+import { StockPricesProps } from '../interfaces';
 import Stripe from './Stripe';
 
 interface CrawlerProps{
-  mostSearchedData: MostSearchedProps[]
+  mostSearchedData: StockPricesProps[]
 }
 
 const Crawler:React.FC<CrawlerProps> = ( {mostSearchedData} ) => {

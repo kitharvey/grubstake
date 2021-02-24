@@ -1,43 +1,38 @@
 import { InferGetStaticPropsType } from 'next';
 import React from 'react'
 import useSWR from 'swr';
-import Crawler from '../components/Crawler';
+// import Crawler from '../components/Crawler';
 import News from '../components/News';
 import Prices from '../components/Prices';
-import { fetcher } from '../fetcher/fetcher';
+import PricesTickers from '../components/PricesTickers';
+import PriceSectorPerformance from '../components/PriceSectorPerformance';
+import { fetchIndex } from '../fetcher/fetcher';
 
 export const getStaticProps = async () => {
-        const news = await fetcher('stock_news');     
-        const mostSearched = await fetcher('quote/AAPL,FB,GOOG,MSFT,ZNGA,NVDA,WBA,PIH');     
+        const indexData = await fetchIndex();      
         return {
-          props: { 
-                  news,
-                  mostSearched
-                 }
+          props: indexData
         }
-      }
-      
+}
 
 
-
-function index({news, mostSearched}:  InferGetStaticPropsType<typeof getStaticProps>){
-        const { data: newsData } = useSWR('stock_news', fetcher, { initialData: news })
-        const { data: mostSearchedData } = useSWR('quote/AAPL,FB,GOOG,MSFT,ZNGA,NVDA,WBA,PIH', fetcher, { initialData: mostSearched })
+function index(indexData:  InferGetStaticPropsType<typeof getStaticProps>){
+        const { data } = useSWR('', fetchIndex, { initialData: indexData })
+        if(!data) return <div>Loading...</div>
         return (
-                <>
-                        <Crawler mostSearchedData={mostSearchedData} />
+                <div>
                         <div className='h-auto container mx-auto px-10 py-16 overflow-x-hidden' >
-                                <News newsData={newsData} />
+                                <News newsData={data.news} />
                                 <div className='grid grid-cols-3 gap-12 mt-16' >
-                                        <Prices title='Most Searched' mostSearchedData={mostSearchedData} />
-                                        <Prices title='Gainers' mostSearchedData={mostSearchedData} />
-                                        <Prices title='Losers' mostSearchedData={mostSearchedData} />
-                                        <Prices title='Currencies' mostSearchedData={mostSearchedData} />
-                                        <Prices title='Cryptocurrency' mostSearchedData={mostSearchedData} />
-                                        <Prices title='Sector Performance' mostSearchedData={mostSearchedData} />
+                                        <Prices title='Most Searched' priceData={data.mostSearched} />
+                                        <Prices title='Gainers' priceData={data.gainers} />
+                                        <Prices title='Losers' priceData={data.losers} />
+                                        <PricesTickers title='Currencies' priceData={data.currencies} />
+                                        <PricesTickers title='Cryptocurrency' priceData={data.crypto} />
+                                        <PriceSectorPerformance title='Sector Performance' priceData={data.sectorPerformance} />
                                 </div>
                         </div>
-                </>
+                </div>
         );
 }
 
