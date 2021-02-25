@@ -1,14 +1,14 @@
 import React from 'react'
-import { MostSearchedProps } from '../interfaces'
+import { StockPricesProps } from '../interfaces'
 
 interface StripeProps{
-    mostSearchedStocks: MostSearchedProps[]
+    mostSearchedStocks: StockPricesProps[]
 }
 
 const Stripe: React.FC<StripeProps> = ({mostSearchedStocks}) => {
     return (
         <div className='animate-ticker flex font-thin text-xs' >
-            {mostSearchedStocks.map((mostActiveStock: MostSearchedProps) => {
+            {mostSearchedStocks.map((mostActiveStock: StockPricesProps) => {
                 return (
                     <p className='px-5 whitespace-nowrap inline-block' key={mostActiveStock.symbol} >
                     <span>{mostActiveStock.symbol}&nbsp;</span>

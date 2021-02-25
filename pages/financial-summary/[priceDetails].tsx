@@ -3,21 +3,13 @@ import React from 'react'
 import useSWR from 'swr';
 import PriceChart from '../../components/PriceChart';
 import PriceDetailCard from '../../components/PriceDetailCard';
-// import priceData from '../../data/price'
 import { fetcher } from '../../fetcher/fetcher';
 
 
 
-interface PriceDetailsProps {
-
-}
-
-
-
-const PriceDetails: React.FC<PriceDetailsProps> = () => {
+const PriceDetails: React.FC = () => {
     const router = useRouter();
     const { priceDetails } = router.query;
-
     const { data: priceData } = useSWR(`quote/${priceDetails}`, fetcher)
     const { data: chartData } = useSWR(`historical-price-full/${priceDetails}`, fetcher)
     if(!priceData || !chartData) return <div>Loading...</div>

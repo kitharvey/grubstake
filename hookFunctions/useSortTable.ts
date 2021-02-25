@@ -1,14 +1,14 @@
 import { useMemo, useState } from "react";
-import { PriceProps } from "../interfaces";
+import { StockPricesProps, TickersPriceProps } from "../interfaces";
 
-type Key = 'symbol' | 'name' | 'price' | 'change'
+type Key = 'symbol' | 'name' | 'price' | 'change' | 'changes' | 'ticker'
 type Direction = string
 export interface setSortConfigProps {
   key: Key
   direction: Direction
 }
 
-const useSortTable = (items: PriceProps[]) => {
+const useSortTable = (items: StockPricesProps[] & TickersPriceProps[]) => {
   const [sortConfig, setSortConfig] = useState<setSortConfigProps | null>(null);
   
   const sortedItems = useMemo(() => {

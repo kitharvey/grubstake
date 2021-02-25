@@ -52,30 +52,6 @@ export interface NewsData{
   'text' : string
   'url' : string
 }
-export interface PriceProps{
-  'symbol' : string,
-  'name' : string,
-  'price' : number,
-  'changesPercentage' : number,
-  'change' : number,
-  'dayLow' ?: number | null,
-  'dayHigh' ?: number | null,
-  'yearHigh' ?: number | null,
-  'yearLow' ?: number | null,
-  'marketCap' ?: number | null,
-  'priceAvg50' ?: number | null,
-  'priceAvg200' ?: number | null,
-  'volume' ?: number | null,
-  'avgVolume' ?: number | null,
-  'exchange' ?: string,
-  'open' ?: number | null,
-  'previousClose' : number,
-  'eps' ?: number| null,
-  'pe' ?: number | null,
-  'earningsAnnouncement' ?: number | null,
-  'sharesOutstanding' ?: number | null,
-  'timestamp' : number
-}
 
 export interface PriceHistoryProps{
   chartData: {
