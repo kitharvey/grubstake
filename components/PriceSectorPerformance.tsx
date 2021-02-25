@@ -26,7 +26,7 @@ const PriceSectorPerformance: React.FC<PricesComponentProps> = ({title, priceDat
                         return (
                             <div 
                                 key={item.sector}
-                                className='grid grid-cols-3 text-sm py-4 px-2 bg-white mt-2 rounded-md cursor-pointer transform transition-all hover:-translate-y-0.5 shadow hover:shadow-lg hover:text-blue-800' 
+                                className='flex items-center justify-between text-sm py-4 px-2 bg-white mt-2 rounded-md cursor-pointer transform transition-all hover:-translate-y-0.5 shadow hover:shadow-lg hover:text-blue-800' 
                                 onClick={() => router.push({
                                     pathname: `/${title}/${item.sector}`,
                                   })}

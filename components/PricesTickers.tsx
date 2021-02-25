@@ -22,6 +22,7 @@ const PricesTickers: React.FC<PricesComponentProps> = ({title, priceData}) => {
                 </div>
                 <div>
                     {items.map( (item: TickersPriceProps) => {
+                        const change = item.changesPercentage.replace(/[()%]/g, '')
                         return (
                             <div 
                                 key={item.ticker}
@@ -35,7 +36,7 @@ const PricesTickers: React.FC<PricesComponentProps> = ({title, priceData}) => {
                                 </div>
                                 <div className={ 'text-center'} >
                                     <span className={item.changes > 0 ? 'text-green-500 bg-green-100 px-2 py-1 rounded-full' : 'text-red-500 bg-red-100 px-2 py-1 rounded-full'} >
-                                        {/* {+(item.changesPercentage.replace(/[()%]/g, ''))}% */}
+                                        {+change}%
                                     </span>
                                 </div>
                                 <div className='text-right' >
