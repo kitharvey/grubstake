@@ -56,7 +56,7 @@ const Table: React.FC<TableProps> = ({title, tableItems}) => {
                                     key={tableItem.symbol} 
                                     className='bg-white font-thin hover:bg-gray-50 hover:font-medium cursor-pointer ' 
                                     onClick={() => router.push({
-                                        pathname: `/${title}/${tableItem.symbol}`,
+                                        pathname: `/financial-summary/${tableItem.symbol}`,
                                     })}
                                 >
                                 <td className='text-center p-3 border-t' >{tableItem.symbol}</td>

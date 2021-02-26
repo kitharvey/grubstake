@@ -1,11 +1,11 @@
-import { InferGetStaticPropsType } from 'next';
+import { InferGetServerSidePropsType } from 'next';
 import { useRouter } from 'next/router';
 import React from 'react'
 import useSWR from 'swr';
 import TableTickers from '../../components/TableTickers';
 import { fetcher } from '../../fetcher/fetcher';
 
-export const getStaticProps = async () => {
+const getServerSideProps = async () => {
     const gainers = await fetcher('gainers');     
     return {
       props:  {
@@ -15,7 +15,7 @@ export const getStaticProps = async () => {
 }
 
 
-const index = ({gainers}:  InferGetStaticPropsType<typeof getStaticProps>) => {
+const index = ({gainers}:  InferGetServerSidePropsType<typeof getServerSideProps>) => {
     const router = useRouter();
     const { prices } = router.query;
     const { data: gainersData } = useSWR('gainers', fetcher, { initialData: gainers })

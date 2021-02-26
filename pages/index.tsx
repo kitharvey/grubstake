@@ -7,7 +7,7 @@ import Prices from '../components/Prices';
 import PricesTickers from '../components/PricesTickers';
 import { fetcher } from '../fetcher/fetcher';
 
-export const getStaticProps = async () => {
+export const getServerSideProps = async () => {
         const news = await fetcher('stock_news');     
         const mostSearched = await fetcher('quote/AAPL,FB,GOOG,MSFT,ZNGA,NVDA,WBA,PIH');     
         const gainers = await fetcher('gainers');     
@@ -28,7 +28,7 @@ const index = ({
         mostSearched,
         gainers,
         losers,
-    }:  InferGetStaticPropsType<typeof getStaticProps>) => {
+    }:  InferGetStaticPropsType<typeof getServerSideProps>) => {
         const { data: newsData } = useSWR('stock_news', fetcher, { initialData: news })
         const { data: mostSearchedData } = useSWR('quote/AAPL,FB,GOOG,MSFT,ZNGA,NVDA,WBA,PIH', fetcher, { initialData: mostSearched })
         const { data: gainersData } = useSWR('gainers', fetcher, { initialData: gainers })

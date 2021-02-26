@@ -37,17 +37,17 @@ const TableTickers: React.FC<TableProps> = ({title, tableItems}) => {
                     <table className="table-fixed w-full text-sm ">
                         <thead className='bg-gray-200' >
                             <tr >
-                                <th className='w-1/6 p-4 cursor-pointer transition-all hover:text-blue-800' onClick={() => requestSort('symbol')} >
-                                    <TableHeaderName title='Symbol' sortName='symbol' sortConfig={sortConfig} />
+                                <th className='w-1/6 p-4 cursor-pointer transition-all hover:text-blue-800' onClick={() => requestSort('ticker')} >
+                                    <TableHeaderName title='Ticker' sortName='ticker' sortConfig={sortConfig} />
                                 </th>
-                                <th className='w-2/6 p-4 cursor-pointer transition-all hover:text-blue-800' onClick={() => requestSort('name')} >
-                                    <TableHeaderName title='Name' sortName='name' sortConfig={sortConfig} />
+                                <th className='w-2/6 p-4 cursor-pointer transition-all hover:text-blue-800' onClick={() => requestSort('companyName')} >
+                                    <TableHeaderName title='Name' sortName='companyName' sortConfig={sortConfig} />
                                 </th>
                                 <th className='w-1/6 p-4 cursor-pointer transition-all hover:text-blue-800' onClick={() => requestSort('price')} >
                                     <TableHeaderName title='Price' sortName='price' sortConfig={sortConfig} />
                                 </th>
-                                <th className='w-1/6 p-4 cursor-pointer transition-all hover:text-blue-800'onClick={() => requestSort('change')} >
-                                    <TableHeaderName title='Change' sortName='change' sortConfig={sortConfig} />
+                                <th className='w-1/6 p-4 cursor-pointer transition-all hover:text-blue-800'onClick={() => requestSort('changes')} >
+                                    <TableHeaderName title='Change' sortName='changes' sortConfig={sortConfig} />
                                 </th>
                                 <th className='w-1/6 p-4' >Change%</th>
                             </tr>
@@ -60,7 +60,7 @@ const TableTickers: React.FC<TableProps> = ({title, tableItems}) => {
                                         key={tableItem.ticker} 
                                         className='bg-white font-thin hover:bg-gray-50 hover:font-medium cursor-pointer ' 
                                         onClick={() => router.push({
-                                            pathname: `/${title}/${tableItem.ticker}`,
+                                            pathname: `/financial-summary/${tableItem.ticker}`,
                                         })}
                                     >
                                     <td className='text-center p-3 border-t' >{tableItem.ticker}</td>
