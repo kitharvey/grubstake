@@ -1,5 +1,5 @@
 import React from 'react'
-import { NewsData } from '../interfaces';
+import { NewsData } from '../interfaces/interfaces';
 
 interface NewsCardProps {
     data: NewsData

@@ -8,10 +8,8 @@ export interface setSortConfigProps {
   direction: Direction
 }
 
-
 const useSortTable = (items: any) => {
   const [sortConfig, setSortConfig] = useState<setSortConfigProps | null>(null);
-  
   const sortedItems = useMemo(() => {
     let sortableItems = [...items];
     if (sortConfig && sortConfig.key) {

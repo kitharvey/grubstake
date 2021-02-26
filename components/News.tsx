@@ -3,7 +3,7 @@ import { motion, AnimatePresence } from "framer-motion";
 import { wrap } from "popmotion";
 import NewsCard from './NewsCard';
 import {FaAngleLeft, FaAngleRight} from 'react-icons/fa'
-import { NewsData } from '../interfaces';
+import { NewsData } from '../interfaces/interfaces';
 const variants = {
   enter: (direction: number) => {
     return {
@@ -66,6 +66,12 @@ const News: React.FC<NewsProps> = ({newsData}) => {
                             initial="enter"
                             animate="center"
                             exit="exit"
+                            whileHover={{
+                              cursor:'grab'
+                            }}
+                            whileTap={{
+                              cursor:'grabbing'
+                            }}
                             transition={{
                               x: { type: "spring", stiffness: 300, damping: 30 },
                               opacity: { duration: 0.2 }

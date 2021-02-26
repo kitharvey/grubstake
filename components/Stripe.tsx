@@ -1,5 +1,5 @@
 import React from 'react'
-import { StockPricesProps } from '../interfaces'
+import { StockPricesProps } from '../interfaces/interfaces'
 
 interface StripeProps{
     mostSearchedStocks: StockPricesProps[]

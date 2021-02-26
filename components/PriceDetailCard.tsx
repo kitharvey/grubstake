@@ -1,8 +1,8 @@
 import React from 'react'
-import {PriceProps} from '../interfaces'
+import {StockPricesProps} from '../interfaces/interfaces'
 import FlexBetween from './FlexBetween';
 interface PriceDetailCardProps {
-    priceData: PriceProps[]
+    priceData: StockPricesProps[]
 }
 
 const PriceDetailCard: React.FC<PriceDetailCardProps> = ({priceData}) => {

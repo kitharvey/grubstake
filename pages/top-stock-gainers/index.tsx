@@ -1,5 +1,4 @@
 import { InferGetServerSidePropsType } from 'next';
-import { useRouter } from 'next/router';
 import React from 'react'
 import useSWR from 'swr';
 import TableTickers from '../../components/TableTickers';
@@ -16,12 +15,11 @@ const getServerSideProps = async () => {
 
 
 const index = ({gainers}:  InferGetServerSidePropsType<typeof getServerSideProps>) => {
-    const router = useRouter();
-    const { prices } = router.query;
     const { data: gainersData } = useSWR('gainers', fetcher, { initialData: gainers })
+    if(!gainersData) return <div>Loading...</div>
         return (
             <div className='container mx-auto p-10'>
-                <TableTickers title={prices} tableItems={gainersData} />
+                <TableTickers title='Stock Market Top Gainers' tableItems={gainersData} />
             </div>
         );
 }

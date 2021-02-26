@@ -1,6 +1,6 @@
 import React from 'react'
 import useSortTable, {setSortConfigProps} from '../hookFunctions/useSortTable';
-import { StockPricesProps } from '../interfaces';
+import { StockPricesProps } from '../interfaces/interfaces';
 import {FaAngleDown, FaAngleUp} from 'react-icons/fa'
 import { useRouter } from 'next/router';
 interface TableProps {

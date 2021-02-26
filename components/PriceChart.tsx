@@ -1,7 +1,7 @@
 import React from 'react'
 import ReactApexChart from 'react-apexcharts';
 // import priceHistory from '../data/history'
-import { PriceHistoryProps, SinglePrice } from '../interfaces';
+import { PriceHistoryProps, SinglePrice } from '../interfaces/interfaces';
 
 
 

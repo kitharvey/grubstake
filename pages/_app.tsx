@@ -7,15 +7,20 @@ import useSWR, { SWRConfig } from 'swr'
 import Crawler from '../components/Crawler'
 import { fetcher } from '../fetcher/fetcher'
 export default function MyApp({ Component, pageProps }: AppProps) {
-  const { data: mostSearchedData } = useSWR('quote/AAPL,FB,GOOG,MSFT,ZNGA,NVDA,WBA,PIH', fetcher)
+  const { data: mostSearchedData } = useSWR('quote/AAPL,FB,GOOG,MSFT,ZNGA,NVDA,WBA,PIH', fetcher, {revalidateOnFocus: false,
+    revalidateOnReconnect: false,
+    refreshWhenOffline: false,
+    refreshWhenHidden: false,
+    refreshInterval: 0})
 
   return (
       <SWRConfig 
       value={{
-        refreshInterval: 0,
         revalidateOnFocus: false,
-        revalidateOnMount: false,
-        shouldRetryOnError: false,
+        revalidateOnReconnect: false,
+        refreshWhenOffline: false,
+        refreshWhenHidden: false,
+        refreshInterval: 0
       }}
       >
           <Head>
