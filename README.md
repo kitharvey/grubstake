@@ -1,41 +1,54 @@
-# TypeScript Next.js example
+# Shtonks
 
-This is a really simple project that shows the usage of Next.js with TypeScript.
+#### Financial Modeling Prep Clone but Discounted. Stocks only.
+# [DEMO](https://unswish.kitharvey.vercel.app/)
 
-## Deploy your own
+<br/>
+<br/>
+<br/>
+<br/>
 
-Deploy the example using [Vercel](https://vercel.com?utm_source=github&utm_medium=readme&utm_campaign=next-example):
+## Installation and Setup Instructions
 
-[![Deploy with Vercel](https://vercel.com/button)](https://vercel.com/new/git/external?repository-url=https://github.com/vercel/next.js/tree/canary/examples/with-typescript&project-name=with-typescript&repository-name=with-typescript)
+Installation:
 
-## How to use it?
+1. Clone the repo
 
-Execute [`create-next-app`](https://github.com/vercel/next.js/tree/canary/packages/create-next-app) with [npm](https://docs.npmjs.com/cli/init) or [Yarn](https://yarnpkg.com/lang/en/docs/cli/create/) to bootstrap the example:
-
-```bash
-npx create-next-app --example with-typescript with-typescript-app
-# or
-yarn create next-app --example with-typescript with-typescript-app
-```
-
-Deploy it to the cloud with [Vercel](https://vercel.com/new?utm_source=github&utm_medium=readme&utm_campaign=next-example) ([Documentation](https://nextjs.org/docs/deployment)).
-
-## Notes
-
-This example shows how to integrate the TypeScript type system into Next.js. Since TypeScript is supported out of the box with Next.js, all we have to do is to install TypeScript.
+```sh
+git clone https://github.com/kitharvey/shtonks.git
 
 ```
-npm install --save-dev typescript
+2. Install NPM packages
+
+```sh
+yarn
 ```
 
-To enable TypeScript's features, we install the type declarations for React and Node.
 
+To Start Server:
+
+```sh 
+yarn start
 ```
-npm install --save-dev @types/react @types/react-dom @types/node
+
+
+
+To Visit App:
+
+```sh 
+localhost:3000
 ```
 
-When we run `next dev` the next time, Next.js will start looking for any `.ts` or `.tsx` files in our project and builds it. It even automatically creates a `tsconfig.json` file for our project with the recommended settings.
 
-Next.js has built-in TypeScript declarations, so we'll get autocompletion for Next.js' modules straight away.
+## Built With
 
-A `type-check` script is also added to `package.json`, which runs TypeScript's `tsc` CLI in `noEmit` mode to run type-checking separately. You can then include this, for example, in your `test` scripts.
+- [NextJS](https://nextjs.org/)
+- [TypeScript](https://www.typescriptlang.org/)
+- [TailwindCSS](https://tailwindcss.com/)
+- [SWR](https://swr.vercel.app/)
+- [Framer Motion](https://www.framer.com/api/motion/)
+- [Apexcharts](https://apexcharts.com/)
+- [Financial Modeling Prep API](https://financialmodelingprep.com/developer/docs)
+
+
+## More features in the future

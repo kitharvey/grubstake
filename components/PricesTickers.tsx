@@ -1,7 +1,7 @@
 import { FaAngleRight } from 'react-icons/fa';
 import React from 'react'
 // import majorIndexes from '../data/major';
-import { TickersPriceProps } from '../interfaces';
+import { TickersPriceProps } from '../interfaces/interfaces';
 import { useRouter } from 'next/router'
 
 interface PricesComponentProps{

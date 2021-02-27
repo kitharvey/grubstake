@@ -80,6 +80,7 @@ const News: React.FC<NewsProps> = ({newsData}) => {
                               dragConstraints={{ left: 0, right: 0 }}
                               dragElastic={1}
                               onDragEnd={(event: MouseEvent | TouchEvent | PointerEvent, { offset, velocity }) => {
+                              console.log(event)
                               const swipe = swipePower(offset.x, velocity.x);
                   
                               if (swipe < -swipeConfidenceThreshold) {

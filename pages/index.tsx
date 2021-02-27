@@ -1,5 +1,6 @@
 import { InferGetStaticPropsType } from 'next';
 import React from 'react'
+import { SyncLoader } from 'react-spinners';
 import useSWR from 'swr';
 // import Crawler from '../components/Crawler';
 import News from '../components/News';
@@ -34,7 +35,13 @@ const index = ({
         const { data: gainersData } = useSWR('gainers', fetcher, { initialData: gainers })
         const { data: losersData } = useSWR('losers', fetcher, { initialData: losers })
 
-        if(!newsData || !mostSearchedData || !gainersData || !losersData) return <div>Loading...</div>
+        if(!newsData || !mostSearchedData || !gainersData || !losersData) {
+                return (
+                        <div className='w-full h-full flex justify-center items-center' > 
+                                <SyncLoader color='#2563EB' size={5} margin={2} /> 
+                        </div>    
+                ) 
+        } 
 
         
         return (

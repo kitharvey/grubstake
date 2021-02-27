@@ -14,19 +14,19 @@ const Header: React.FC<HeaderProps> = ({}) => {
                                 <div className='container mx-auto px-10 py-4 flex items-center justify-between' >
                                         <div className='flex items-center' >
                                                 <h1 
-                                                className='text-3xl font-black cursor-pointer hover:text-blue-800'  
+                                                className='text-3xl font-black cursor-pointer hover:text-blue-600'  
                                                 onClick={() => router.push({
                                                         pathname: `/`,
                                                 })} 
                                                 >
                                                         Shtonks
                                                 </h1>
-                                                <a href='https://github.com/kitharvey/grubstake/' target='_blank'  rel="noreferrer" className='text-3xl font-black cursor-pointer ml-4 hover:text-blue-800' ><DiGithubBadge/></a>
+                                                <a href='https://github.com/kitharvey/shtonks' target='_blank'  rel="noreferrer" className='text-3xl font-black cursor-pointer ml-4 hover:text-blue-600' ><DiGithubBadge/></a>
                                         </div>
 
                                         <div className="flex items-center">
                                                 {/* <label htmlFor="searchstock" className="text-black text-sm mr-3 " >Search: </label> */}
-                                                <form method="GET" onSubmit={ (event: React.FormEvent<HTMLFormElement>) => event.preventDefault() }>
+                                                {/* <form method="GET" onSubmit={ (event: React.FormEvent<HTMLFormElement>) => event.preventDefault() }>
                                                         <div className="flex text-gray-400 border-gray-200 border-solid border focus-within:text-black focus-within:border-gray-400 bg-white rounded w-80  p-2">
                                                                 <input id="searchstock" name="searchstock" className="w-full rounded text-xs font-thin focus:outline-none text-gray-900" placeholder="Search stock..." autoComplete="off"/>
                                                                 <button type='submit' className="border-0 outline-none focus:outline-none">
@@ -34,7 +34,7 @@ const Header: React.FC<HeaderProps> = ({}) => {
                                                                 </button>
                                                                 
                                                         </div>
-                                                </form>
+                                                </form> */}
                                         </div>
                                 </div>
                         </div>
