@@ -47,7 +47,7 @@ localhost:3000
 - [TailwindCSS](https://tailwindcss.com/)
 - [SWR](https://swr.vercel.app/)
 - [Framer Motion](https://www.framer.com/api/motion/)
-- [Apexcharts](https://apexcharts.com/)
+- [Highcharts](https://www.highcharts.com/)
 - [Financial Modeling Prep API](https://financialmodelingprep.com/developer/docs)
 
 
