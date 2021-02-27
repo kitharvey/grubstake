@@ -51,4 +51,9 @@ localhost:3000
 - [Financial Modeling Prep API](https://financialmodelingprep.com/developer/docs)
 
 
-## More features in the future
+## Will add more features in the future
+- footer
+- 404 animation
+- error catcher if there's no api calls remaining
+- and more
+
