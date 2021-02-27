@@ -1,20 +1,22 @@
 import React from 'react'
-import { PriceHistoryProps, SinglePrice } from '../interfaces/interfaces';
-import ReactApexChart from 'react-apexcharts';
-
+import { PriceHistoryProps, 
+  SinglePrice
+ } from '../interfaces/interfaces';
+// import ReactApexChart from 'react-apexcharts';
+import Highcharts from 'highcharts'
+import HighchartsReact from 'highcharts-react-official'
 
 const getColor = (data: SinglePrice[]) => {
-  console.log(data[data.length-1])
   return data[data.length-1].changeOverTime < 0 ? '#EF4444' :'#10B981'
 }
 
 const getPrice = (data: SinglePrice[]) => {
-  return [{name: "Price", data: data.map( ({open,close,high,low,date}) => {
-    return {
-        x: date,
-        y: ((open + high + low + close)/4).toFixed(4)
-    }
-}  )}] 
+  return data.map( ({open,close,high,low}) => {
+    return +((open + high + low + close)/4).toFixed(4)
+  })
+}
+const getDate = (data: SinglePrice[]) => {
+  return data.map( ({date}) => date)
 }
 
 
@@ -24,66 +26,65 @@ const getPrice = (data: SinglePrice[]) => {
 const PriceChart: React.FC<PriceHistoryProps> = ({chartData}) => {
     const sortedchartData = chartData.historical.sort( (a,b) => a.date.localeCompare(b.date) )
     const options = {
-      chart: {
-        type: 'area',
-      },
       title: {
-        text: `${chartData.symbol} Daily`,
+        text: chartData.symbol + ' Daily Price Chart',
         align: 'left',
-        margin: 10,
-        offsetX: 0,
-        offsetY: 0,
-        floating: false,
-        style: {
-          fontSize:  '14px',
-          fontWeight:  'medium',
-          fontFamily:  'Roboto, sans-serif',
-          color:  '#263238'
-        },
-    },
-      xaxis: {
-        type: 'datetime'
+        style: { 
+          "color": "#333333", 
+          "fontSize": "16px",
+          "fontWeight": "900",
+          "fontFamily": "Roboto, sans-serif",
+        }
       },
-      yaxis: {
-        tooltip: {
-          enabled: false,
-          offsetX: 0,
-        },
-        labels: {
-          style: {
-              colors: [],
-              fontSize: '12px',
-              fontFamily: 'Roboto, sans-serif',
-              fontWeight: 400,
-              cssClass: 'apexcharts-yaxis-label',
+      plotOptions:{
+        area:{
+          lineWidth: 1,
+          marker: {
+            enabled: false
           },
-          formatter: (value: number) => { return value.toLocaleString() },
-      },
-      },
-      dataLabels: {
-          enabled: false
+          fillOpacity:0.5,
         },
-      stroke: {
-          show: true,
-          curve: 'smooth',
-          colors: undefined,
-          width: 1,
-          dashArray: 0,      
+        series: {
+          fillColor: {
+              linearGradient: [0, 0, 0, 350],
+              stops: [
+                  [0, getColor(sortedchartData)],
+                  [1, getColor(sortedchartData)+'00']
+              ]
+          }
+      }
       },
       tooltip: {
-          x: {
-              show: true,
-              format: 'dd MMM yyyy',
-              formatter: undefined,
-          },
+        pointFormat: '{series.name} <b>{point.y}</b>'
       },
-      colors:  [getColor(sortedchartData)]
-      
+      legend: {
+        enabled: false
+      },
+      chart: {
+        type: 'area'
+      },
+      xAxis: {
+        categories: getDate(sortedchartData),
+        visible:false
+      },
+      yAxis: {
+        title: {
+          enabled: false
+        },
+      },
+      colors:  [getColor(sortedchartData)],
+      series: [{
+        name: chartData.symbol,
+        data: getPrice(sortedchartData)
+      }]
     }
 
     return (
       <div className='w-full overflow-hidden rounded-md shadow-lg bg-white p-4 ml-5' >
-        <ReactApexChart options={options} series={getPrice(sortedchartData)} type="area" height='95%' width='100%' />
+        <HighchartsReact
+          highcharts={Highcharts}
+          options={options}
+        />
       </div>
     );
 }
