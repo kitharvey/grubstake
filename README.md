@@ -1,12 +1,7 @@
 # Shtonks
 
 #### Financial Modeling Prep Clone but Discounted. Stocks only.
-# [DEMO](https://unswish.kitharvey.vercel.app/)
-
-<br/>
-<br/>
-<br/>
-<br/>
+# [DEMO](https://shtonks.vercel.app/)
 
 ## Installation and Setup Instructions
 
