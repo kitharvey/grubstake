@@ -19,9 +19,9 @@ const NewsCard: React.FC<NewsCardProps> = ({data}) => {
                         backgroundSize: 'cover',
                         backgroundPosition: 'center',
                     }} />
-                    <div className='w-2/5 min-w-2/5 h-full bg-white text-black p-10 flex flex-col justify-between' >
+                    <div className='w-2/5 min-w-2/5 h-full bg-white text-black p-4 md:p-10 flex flex-col justify-between' >
                         <div className='h-full w-full' >
-                            <p className='text-2xl' >{data.title}</p>
+                            <p className='text-lg md:text-2xl' >{data.title}</p>
                             <p className='font-thin ' >{trimEllip(data.text, 120)}</p>
                         </div>
                         <div>

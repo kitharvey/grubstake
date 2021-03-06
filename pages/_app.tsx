@@ -9,7 +9,8 @@ import { fetcher } from '../fetcher/fetcher'
 import { SyncLoader } from 'react-spinners';
 
 export default function MyApp({ Component, pageProps }: AppProps) {
-  const { data: mostSearchedData } = useSWR('quote/AAPL,FB,GOOG,MSFT,ZNGA,NVDA,WBA,PIH', fetcher, {revalidateOnFocus: false,
+  const { data: mostSearchedData } = useSWR('quote/AAPL,FB,GOOG,MSFT,ZNGA,NVDA,WBA,PIH', fetcher, {
+    revalidateOnFocus: false,
     revalidateOnReconnect: false,
     refreshWhenOffline: false,
     refreshWhenHidden: false,

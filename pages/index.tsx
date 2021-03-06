@@ -48,7 +48,7 @@ const index = ({
                 <div>
                         <div className='h-auto container mx-auto px-10 py-16 overflow-x-hidden' >
                                 <News newsData={newsData} />
-                                <div className='grid grid-cols-3 gap-12 mt-16' >
+                                <div className='grid grid-cols-1 gap-12 mt-16 md:grid-cols-3' >
                                         <Prices title='Most Searched' priceData={mostSearchedData} link='most-searched-stocks' />
                                         <PricesTickers title='Gainers' priceData={gainersData} link='top-stock-gainers'  />
                                         <PricesTickers title='Losers' priceData={losersData} link='top-stock-losers'  />
