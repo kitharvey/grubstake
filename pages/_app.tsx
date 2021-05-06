@@ -9,12 +9,14 @@ import { fetcher } from '../fetcher/fetcher'
 import { SyncLoader } from 'react-spinners';
 
 export default function MyApp({ Component, pageProps }: AppProps) {
-  const { data: mostSearchedData } = useSWR('quote/AAPL,FB,GOOG,MSFT,ZNGA,NVDA,WBA,PIH', fetcher, {
+  const { data: mostSearchedData } = useSWR('actives', fetcher, {
     revalidateOnFocus: false,
     revalidateOnReconnect: false,
     refreshWhenOffline: false,
     refreshWhenHidden: false,
     refreshInterval: 0})
+
+    console.log({mostSearchedData})
 
   return (
       <SWRConfig 
@@ -39,7 +41,7 @@ export default function MyApp({ Component, pageProps }: AppProps) {
           <div className='w-full h-screen' >
             <Header />
             {mostSearchedData 
-              ? <Crawler mostSearchedData={mostSearchedData} /> 
+              ? <Crawler actives={mostSearchedData} /> 
               : <div className='w-full flex justify-center items-center overflow-hidden shadow-lg border-b border-t border-gray-100 border-solid py-2 bg-white' > 
                   <SyncLoader color='#2563EB' size={5} margin={2} /> 
                 </div> }
