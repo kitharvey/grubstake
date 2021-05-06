@@ -2,11 +2,11 @@ import { InferGetServerSidePropsType } from 'next';
 import React from 'react'
 import { SyncLoader } from 'react-spinners';
 import useSWR from 'swr';
-import Table from '../../components/Table';
+import TableTickers from '../../components/TableTickers';
 import { fetcher } from '../../fetcher/fetcher';
 
-const index = ({mostSearchedStocks}:  InferGetServerSidePropsType<typeof getServerSideProps>) => {
-    const { data: actives } = useSWR('actives', fetcher, { initialData: mostSearchedStocks })
+const index = ({activesData}:  InferGetServerSidePropsType<typeof getServerSideProps>) => {
+    const { data: actives } = useSWR('actives', fetcher, { initialData: activesData })
     if(!actives)  {
         return (
                 <div className='w-full h-full flex justify-center items-center' > 
@@ -16,16 +16,16 @@ const index = ({mostSearchedStocks}:  InferGetServerSidePropsType<typeof getServ
     } 
         return (
             <div className='container mx-auto p-10'>
-                <Table title='Most Searched Stocks' tableItems={actives} />
+                <TableTickers title='Most Active Stocks' tableItems={actives} />
             </div>
         );
 }
 
 const getServerSideProps = async () => {
-    const mostSearchedStocks = await fetcher('quote/AAPL,FB,GOOG,MSFT,ZNGA,NVDA,WBA,PIH');   
+    const activesData = await fetcher('actives');   
     return {
       props:  {
-        mostSearchedStocks,
+        activesData,
         }
     }
 }

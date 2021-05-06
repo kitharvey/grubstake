@@ -16,8 +16,6 @@ export default function MyApp({ Component, pageProps }: AppProps) {
     refreshWhenHidden: false,
     refreshInterval: 0})
 
-    console.log({mostSearchedData})
-
   return (
       <SWRConfig 
       value={{
@@ -31,8 +29,8 @@ export default function MyApp({ Component, pageProps }: AppProps) {
           <Head>
               <meta charSet="utf-8" />
               <meta name="viewport" content="initial-scale=1.0, width=device-width" />
-              <title>Shtonks</title>
-              <meta name="title" content="grub&#183;stake | Financial Modeling Prep Discounted Clone" />
+              <title>Shtonks | Financial Modeling Prep Discounted Clone</title>
+              <meta name="title" content="Shtonks | Financial Modeling Prep Discounted Clone" />
               <meta
               name="description"
               content="Access all stocks discounted cash flow statements, market price, stock markets news, and learn more about Financial Modeling. Learn M&A, LBO, DCF, Comps, and Financial Statement Modeling thought concrete examples"

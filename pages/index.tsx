@@ -8,13 +8,13 @@ import { fetcher } from '../fetcher/fetcher';
 
 export const getServerSideProps = async () => {
         const news = await fetcher('stock_news');     
-        const mostSearched = await fetcher('actives');     
+        const actives = await fetcher('actives');     
         const gainers = await fetcher('gainers');     
         const losers = await fetcher('losers');       
         return {
           props:  {
                 news,
-                mostSearched,
+                actives,
                 gainers,
                 losers,
             }
@@ -24,12 +24,12 @@ export const getServerSideProps = async () => {
 
 const index = ({
         news,
-        mostSearched,
+        actives,
         gainers,
         losers,
     }:  InferGetStaticPropsType<typeof getServerSideProps>) => {
         const { data: newsData } = useSWR('stock_news', fetcher, { initialData: news })
-        const { data: activesData } = useSWR('actives', fetcher, { initialData: mostSearched })
+        const { data: activesData } = useSWR('actives', fetcher, { initialData: actives })
         const { data: gainersData } = useSWR('gainers', fetcher, { initialData: gainers })
         const { data: losersData } = useSWR('losers', fetcher, { initialData: losers })
 
