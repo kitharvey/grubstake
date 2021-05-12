@@ -11,7 +11,7 @@ const Header: React.FC<HeaderProps> = ({}) => {
         return (
                 <div className='relative z-10' >
                         <div className='w-full h-auto bg-white' >
-                                <div className='container mx-auto px-10 py-4 flex items-center justify-between' >
+                                <div className='container mx-auto px-2 py-4 flex items-center justify-between' >
                                         <div className='flex items-center' >
                                                 <h1 
                                                 className='text-3xl font-black cursor-pointer hover:text-blue-600'  

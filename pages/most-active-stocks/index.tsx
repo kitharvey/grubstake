@@ -5,6 +5,15 @@ import useSWR from 'swr';
 import TableTickers from '../../components/TableTickers';
 import { fetcher } from '../../fetcher/fetcher';
 
+const getServerSideProps = async () => {
+    const activesData = await fetcher('actives');   
+    return {
+      props:  {
+        activesData,
+        }
+    }
+}
+
 const index = ({activesData}:  InferGetServerSidePropsType<typeof getServerSideProps>) => {
     const { data: actives } = useSWR('actives', fetcher, { initialData: activesData })
     if(!actives)  {
@@ -15,23 +24,10 @@ const index = ({activesData}:  InferGetServerSidePropsType<typeof getServerSideP
         ) 
     } 
         return (
-            <div className='container mx-auto p-10'>
+            <div className='container mx-auto px-2 py-10'>
                 <TableTickers title='Most Active Stocks' tableItems={actives} />
             </div>
         );
 }
-
-const getServerSideProps = async () => {
-    const activesData = await fetcher('actives');   
-    return {
-      props:  {
-        activesData,
-        }
-    }
-}
-
-
-
-
 
 export default index

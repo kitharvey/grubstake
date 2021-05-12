@@ -44,7 +44,7 @@ const index = ({
         
         return (
                 <div>
-                        <div className='h-auto container mx-auto px-10 py-16 overflow-x-hidden' >
+                        <div className='h-auto container mx-auto px-2 py-16 overflow-x-hidden' >
                                 <News newsData={newsData} />
                                 <div className='grid grid-cols-1 gap-12 mt-16 md:grid-cols-3' >
                                         <PricesTickers title='Actives' priceData={activesData} link='most-active-stocks' />

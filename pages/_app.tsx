@@ -36,7 +36,7 @@ export default function MyApp({ Component, pageProps }: AppProps) {
               content="Access all stocks discounted cash flow statements, market price, stock markets news, and learn more about Financial Modeling. Learn M&A, LBO, DCF, Comps, and Financial Statement Modeling thought concrete examples"
               />
           </Head>
-          <div className='w-full h-screen' >
+          <div className='w-full min-h-screen' >
             <Header />
             {mostSearchedData 
               ? <Crawler actives={mostSearchedData} /> 

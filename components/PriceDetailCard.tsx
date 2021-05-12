@@ -21,7 +21,7 @@ const PriceDetailCard: React.FC<PriceDetailCardProps> = ({priceData}) => {
     const {name, price, change, changesPercentage, dayHigh, dayLow, open, previousClose} = newPrice[0]
 
         return (
-            <div className='grid grid-rows-8 overflow-hidden rounded-md shadow-lg w-96 bg-white p-2' >
+            <div className='grid grid-rows-8 overflow-hidden rounded-md shadow-lg bg-white p-2 w-full md:w-96' >
                 <FlexBetween category='Name' details={<p>{name}</p>} />
                 <FlexBetween category='Price' details={<p>{price}</p>} />
                 <FlexBetween category='Change' details={<p className={+change > 0 ? 'text-green-500' : 'text-red-500'}>{change}</p>} />

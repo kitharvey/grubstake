@@ -25,7 +25,7 @@ const index = ({gainers}:  InferGetServerSidePropsType<typeof getServerSideProps
         ) 
     } 
         return (
-            <div className='container mx-auto p-10'>
+            <div className='container mx-auto px-2 py-10'>
                 <TableTickers title='Stock Market Top Gainers' tableItems={gainersData} />
             </div>
         );

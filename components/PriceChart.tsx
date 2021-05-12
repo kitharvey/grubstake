@@ -80,7 +80,7 @@ const PriceChart: React.FC<PriceHistoryProps> = ({chartData}) => {
     }
 
     return (
-      <div className='w-full overflow-hidden rounded-md shadow-lg bg-white p-4 ml-5' >
+      <div className='w-full overflow-hidden rounded-md shadow-lg bg-white p-4 mt-5 ml-0 md:ml-5 md:mt-0' >
         <HighchartsReact
           highcharts={Highcharts}
           options={options}

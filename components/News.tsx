@@ -93,10 +93,10 @@ const News: React.FC<NewsProps> = ({newsData}) => {
                                 <NewsCard data={newsData[imageIndex]} />
                             </motion.div>
                         </AnimatePresence>
-                        <div className="cursor-pointer absolute bottom-1/2 left-0 transform translate-x-4 translate-y-1/2 transition-all hover:text-blue-800 text-4xl z-10" onClick={() => paginate(-1)}>
+                        <div className="cursor-pointer absolute bottom-1/2 hidden md:block left-0 transform translate-x-4 translate-y-1/2 transition-all hover:text-blue-800 text-4xl z-10" onClick={() => paginate(-1)}>
                             <FaAngleLeft />
                         </div>
-                        <div className="cursor-pointer absolute bottom-1/2 right-0 transform -translate-x-4 translate-y-1/2 transition-all hover:text-blue-800 text-4xl z-10" onClick={() => paginate(1)}>
+                        <div className="cursor-pointer absolute bottom-1/2 hidden md:block right-0 transform -translate-x-4 translate-y-1/2 transition-all hover:text-blue-800 text-4xl z-10" onClick={() => paginate(1)}>
                             <FaAngleRight />
                         </div>
                     </div>
